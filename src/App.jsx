@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import Tags from "./components/Tags/Tags"
+import Timer from "./components/Timer/Timer"
 
 function App() {
   return (
     <>
       <Title>Pomodoro Timer</Title>
       <Tags />
-      {/* Timer */}
+      <Timer />
       {/* Setting icons */}
     </>
   )
