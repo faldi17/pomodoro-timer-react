@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import App from './App.jsx'
+import StateProvider from './components/StateProvider.jsx'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -32,9 +33,11 @@ const theme = {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <StateProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </StateProvider>
   </StrictMode>
 )
