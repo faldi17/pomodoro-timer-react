@@ -2,21 +2,36 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Clock = () => {
-    const [time, setTime] = useState(10)
+    const [time, setTime] = useState(600)
+    const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setTime((time) => time - 1)
-        }, 1000)
+        if (isActive && time > 0) {
+            const interval = setInterval(() => {
+                setTime((time) => time - 1)
+            }, 1000)
 
-        return () => clearInterval(interval)
-    }, [])
+            return () => clearInterval(interval)
+        }
+    }, [time, isActive])
+
+    const toggleClock = () => {
+        setIsActive(!isActive)
+    }
+
+    const getTime = (time) => {
+        const min = Math.floor(time / 60)
+        const sec = time % 60
+        return `${min < 10 ? "0" + min : min}:${sec < 10? "0" + sec : sec}`
+    }
     
     return (
         <>
             <ClockContainer>
-                <TimerText>{ time }</TimerText>
-                <StartPauseButton>Pause</StartPauseButton>
+                <TimerText>{ getTime(time) }</TimerText>
+                <StartPauseButton onClick={toggleClock}>
+                    {isActive? "Pause" : "Start"}
+                </StartPauseButton>
             </ClockContainer>
         </>
     )
