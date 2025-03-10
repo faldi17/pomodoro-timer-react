@@ -1,10 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import Clock from './Clock/Clock'
 import { StateContext } from '../../StateProvider'
 
 const CircularProgress = () => {
-    const { progress, setProgress } = useContext(StateContext)
+    const { progress, setProgress, time, initTime } = useContext(StateContext)
+
+    useEffect(() => {
+        setProgress(time / (initTime / 100))
+    }, [setProgress, time, initTime])
 
     return (
         <>
