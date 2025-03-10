@@ -4,7 +4,7 @@ export const StateContext = createContext()
 
 const StateProvider = ({ children }) => {
     const [workTime, setWorkTime] = useState(25 * 60)
-    const [shortBreakTime, setShortBreakTime] = useState(5 * 60)
+    const [shortBreakTime, setShortBreakTime] = useState(3)
     const [longBreakTime, setLongBreakTime] = useState(30 * 60)
 
     const [initTime, setInitTime] = useState(0)
@@ -38,7 +38,11 @@ const StateProvider = ({ children }) => {
             activeTag, setActiveTag,
             progress, setProgress,
             isActive, setIsActive,
-            time, setTime
+            time, setTime,
+            initTime, setInitTime,
+            workTime, setWorkTime,
+            shortBreakTime, setShortBreakTime,
+            longBreakTime, setLongBreakTime
         }}>{children}</StateContext.Provider>
     )
 }
