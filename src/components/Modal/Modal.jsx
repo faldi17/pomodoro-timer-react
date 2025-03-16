@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
 function Modal() {
-  return (
-    <div>Modal</div>
-  )
+	return <div>Modal</div>;
 }
 
-export default Modal
+export default Modal;
