@@ -1,14 +1,14 @@
-import { useContext, useEffect } from 'react'
-import styled from 'styled-components'
-import Clock from './Clock/Clock'
-import { StateContext } from '../../StateProvider'
+import { useContext, useEffect } from 'react';
+import styled from 'styled-components';
+import Clock from './Clock/Clock';
+import { StateContext } from '../../StateProvider';
 
 const CircularProgress = () => {
-    const { progress, setProgress, time, initTime } = useContext(StateContext)
+    const { progress, setProgress, time, initTime } = useContext(StateContext);
 
     useEffect(() => {
-        setProgress(time / (initTime / 100))
-    }, [setProgress, time, initTime])
+        setProgress(time / (initTime / 100));
+    }, [setProgress, time, initTime]);
 
     return (
         <>
@@ -18,10 +18,10 @@ const CircularProgress = () => {
                 </InnerCircle>
             </OuterCircle>
         </>
-    )
-}
+    );
+};
 
-export default CircularProgress
+export default CircularProgress;
 
 const OuterCircle = styled.div`
     height: 35rem;
@@ -33,7 +33,7 @@ const OuterCircle = styled.div`
         ${(props) => props.theme.colors.primary} ${({ progress }) => progress}%,
         transparent ${({ progress }) => progress}%
     );
-`
+`;
 
 const InnerCircle = styled.div`
     background: ${(props) => props.theme.colors.secondary};
@@ -42,4 +42,4 @@ const InnerCircle = styled.div`
     border-radius: 50%;
     display: grid;
     place-items: center;
-`
+`;
