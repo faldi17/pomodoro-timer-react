@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { FaWindowClose } from 'react-icons/fa';
 import styled from 'styled-components';
 
 function ModalContainer({ isOpen, onClose }) {
@@ -11,7 +12,9 @@ function ModalContainer({ isOpen, onClose }) {
                 exit={{ y: '-100vh', scale: 0 }}>
                 <ModalHeader>
                     <ModalTitle>Settings</ModalTitle>
-                    <ModalCloseButton onClick={onClose}>X</ModalCloseButton>
+                    <ModalCloseButton onClick={onClose}>
+                        <FaWindowClose fontSize="3rem" />
+                    </ModalCloseButton>
                 </ModalHeader>
                 <ModalBody></ModalBody>
             </ModalContent>
@@ -32,7 +35,7 @@ const Container = styled.div`
 
 const ModalContent = styled(motion.div)`
     background-color: #ffffff;
-    width: 60rem;
+    width: 45rem;
     height: 40rem;
     border-radius: 10px;
 `;
@@ -42,12 +45,15 @@ const ModalHeader = styled.div`
     padding: 2rem;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid black;
 `;
 
 const ModalTitle = styled.h3`
     font-size: 3rem;
 `;
 
-const ModalCloseButton = styled.button``;
+const ModalCloseButton = styled.button`
+    all: unset;
+`;
 
 const ModalBody = styled.div``;
