@@ -1,20 +1,33 @@
-import { useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import { StateContext } from '../../../StateProvider';
+import { useEffect, useContext } from "react";
+import styled from "styled-components";
+import { StateContext } from "../../../StateProvider";
+import beepSound from "../../../../assets/beep.mp3";
 
 const Clock = () => {
     const { time, setTime, isActive, setIsActive, initTime } =
         useContext(StateContext);
 
     useEffect(() => {
-        if (isActive && time > 0) {
-            const interval = setInterval(() => {
-                setTime((time) => time - 1);
-            }, 1000);
+        if (!isActive) return;
+        
+        const interval = setInterval(() => {
+            setTime((prevTime) => {
+                if ( prevTime <= 1){
+                    clearInterval(interval);
+                    playSound();
+                    return 0;
+                }
+                return prevTime - 1;
+            });
+        }, 1000);
 
-            return () => clearInterval(interval);
-        }
-    }, [time, isActive]);
+        return () => clearInterval(interval);
+    }, [isActive, setTime]);
+
+    const playSound = () => {
+        const audio = new Audio(beepSound);
+        audio.play();
+    }
 
     const resetTime = () => {
         setTime(initTime);
@@ -22,13 +35,13 @@ const Clock = () => {
     };
 
     const toggleClock = () => {
-        setIsActive(!isActive);
+        setIsActive((prev) => !prev);
     };
 
     const getTime = (time) => {
         const min = Math.floor(time / 60);
         const sec = time % 60;
-        return `${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`;
+        return `${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`;
     };
 
     return (
@@ -37,7 +50,7 @@ const Clock = () => {
                 <TimerText>{getTime(time)}</TimerText>
                 {time !== 0 && (
                     <StartPauseButton onClick={toggleClock}>
-                        {isActive ? 'Pause' : 'Start'}
+                        {isActive ? "Pause" : "Start"}
                     </StartPauseButton>
                 )}
                 {time === 0 && (

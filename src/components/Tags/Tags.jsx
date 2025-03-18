@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import styled, { css } from 'styled-components';
-import { StateContext } from '../StateProvider';
+import { useContext } from "react";
+import styled, { css } from "styled-components";
+import { StateContext } from "../StateProvider";
 
 const Tags = () => {
     const { activeTag, setActiveTag } = useContext(StateContext);
@@ -11,11 +11,12 @@ const Tags = () => {
     return (
         <>
             <TagsContainer>
-                {['Work', 'Short Break', 'Long Break'].map((tag, i) => (
+                {["Work", "Short Break", "Long Break"].map((tag, i) => (
                     <Tag
                         onClick={() => handleTagClick(i)}
                         activeTag={activeTag === i}
-                        key={i}>
+                        key={i}
+                    >
                         {tag}
                     </Tag>
                 ))}

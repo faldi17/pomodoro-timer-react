@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { createContext, useEffect, useState } from "react";
 
 export const StateContext = createContext();
 
@@ -31,6 +32,7 @@ const StateProvider = ({ children }) => {
             default:
                 break;
         }
+        setIsActive(false);
     }, [activeTag, workTime, shortBreakTime, longBreakTime]);
 
     return (
@@ -52,7 +54,8 @@ const StateProvider = ({ children }) => {
                 setShortBreakTime,
                 longBreakTime,
                 setLongBreakTime,
-            }}>
+            }}
+        >
             {children}
         </StateContext.Provider>
     );

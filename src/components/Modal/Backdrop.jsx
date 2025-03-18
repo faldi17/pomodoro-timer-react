@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 function Backdrop() {
     return <KBackdrop />;
@@ -16,4 +16,3 @@ const KBackdrop = styled.div`
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.5);
 `;
- 

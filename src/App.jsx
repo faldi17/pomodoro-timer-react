@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import Tags from './components/Tags/Tags';
-import Timer from './components/Timer/Timer';
-import Modal from './components/Modal/Modal';
-import { useState } from 'react';
-import { FaCog } from 'react-icons/fa';
+import styled from "styled-components";
+import Tags from "./components/Tags/Tags";
+import Timer from "./components/Timer/Timer";
+import Modal from "./components/Modal/Modal";
+import { useState } from "react";
+import { FaCog } from "react-icons/fa";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,6 @@ function App() {
             <Title>Pomodoro Timer</Title>
             <Tags />
             <Timer />
-            {/* Setting icons */}
             <CogIcon onClick={onOpen}>
                 <FaCog />
             </CogIcon>
@@ -36,4 +35,5 @@ const CogIcon = styled.div`
     display: flex;
     justify-content: center;
     font-size: 4rem;
-`
+    cursor: pointer;
+`;

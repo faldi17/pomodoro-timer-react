@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import Clock from './Clock/Clock';
-import { StateContext } from '../../StateProvider';
+import { useContext, useEffect } from "react";
+import styled from "styled-components";
+import Clock from "./Clock/Clock";
+import { StateContext } from "../../StateProvider";
 
 const CircularProgress = () => {
     const { progress, setProgress, time, initTime } = useContext(StateContext);
@@ -30,7 +30,7 @@ const OuterCircle = styled.div`
     display: grid;
     place-items: center;
     background: conic-gradient(
-        ${(props) => props.theme.colors.primary} ${({ progress }) => progress}%,
+        white ${({ progress }) => progress}%,
         transparent ${({ progress }) => progress}%
     );
 `;

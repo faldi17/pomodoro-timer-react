@@ -1,8 +1,8 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import App from './App.jsx';
-import StateProvider from './components/StateProvider.jsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import App from "./App.jsx";
+import StateProvider from "./components/StateProvider.jsx";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,13 +25,13 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
     colors: {
-        primary: '#004c68',
-        secondary: '#002634',
-        bg: '#008abd',
+        primary: "#004c68",
+        secondary: "#002634",
+        bg: "#008abd",
     },
 };
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
     <StrictMode>
         <StateProvider>
             <ThemeProvider theme={theme}>
